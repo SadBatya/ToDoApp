@@ -9,6 +9,7 @@ const tasksArray = [
 const myTasksBox = document.querySelectorAll('ul');
 
 tasksArray.map((task) => {
+  let html = task.title
   myTasksBox.innerHTML = `
     <li>
       <label data-type=${task.type}>
