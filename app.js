@@ -4,10 +4,7 @@ const greenBox = document.querySelector('#box3');
 
 //Поменять класс "green" на "orange" и "circle" (для зеленого квадрата).
 greenBox.addEventListener('click', () => {
-  if (
-    greenBox.classList.contains('orange') &&
-    greenBox.classList.contains('circle')
-  ) {
+  if (greenBox.classList.contains('orange')) {
     greenBox.classList.add('green');
     greenBox.classList.remove('orange');
     greenBox.classList.remove('circle');
@@ -20,11 +17,20 @@ greenBox.addEventListener('click', () => {
 
 //Поменять класс "orange" на "blue" (для оранжевого квадрата).
 orangeBox.addEventListener('click', () => {
-  orangeBox.classList.remove('orange');
-  orangeBox.classList.add('blue');
+  if (orangeBox.classList.contains('blue')) {
+    orangeBox.classList.add('orange');
+    orangeBox.classList.remove('blue');
+  } else {
+    orangeBox.classList.remove('orange');
+    orangeBox.classList.add('blue');
+  }
 });
 
 //Добавить класс "circle" и превратить в круг (для красного квадрата).
 redBox.addEventListener('click', () => {
-  redBox.classList.add('blue');
+  if (redBox.classList.contains('circle')) {
+    redBox.classList.remove('circle');
+  } else {
+    redBox.classList.add('circle');
+  }
 });
