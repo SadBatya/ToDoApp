@@ -1,0 +1,34 @@
+.panel {
+  display: flex;
+  justify-content: center;
+}
+
+.group:first-child {
+  border-right: 1px solid #ccc;
+  margin-right: 1rem;
+  padding-right: 1rem;
+}
+
+.btn {
+  padding: 0.7rem 2rem;
+  border: 1px solid #ccc;
+  background: #f7f7f7;
+  border-radius: 6px;
+  transition: 0.3s background;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.btn:hover {
+  background: #fff;
+  cursor: pointer;
+}
+
+h3 {
+  font-size: 20px;
+  font-family: inherit;
+  text-align: center;
+  font-weight: normal;
+}
