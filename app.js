@@ -4,17 +4,19 @@ const normalizeBtn = document.querySelector('#normal');
 const fontWeightBoldBtn = document.querySelector('#bold');
 const fontStyleItalicdBtn = document.querySelector('#italic');
 const text = document.querySelector('h3');
-let fontSizeValue = 20
+const styleText = window.getComputedStyle(text)
+let fontSizeText = parseInt(styleText.fontSize)
+
 
 
 plusFontSizeBtn.addEventListener('click', () => {
-  fontSizeValue++
-  text.style.fontSize = fontSizeValue + 'px'
+  fontSizeText++
+  text.style.fontSize = fontSizeText + 'px'
 });
 
 minusFontSizeBtn.addEventListener('click', () => {
-  fontSizeValue--
-  text.style.fontSize = fontSizeValue + 'px'
+  fontSizeText--
+  text.style.fontSize = fontSizeText + 'px'
 })
 
 fontWeightBoldBtn.addEventListener('click', () => {
