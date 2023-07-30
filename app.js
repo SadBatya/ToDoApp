@@ -4,18 +4,8 @@ const backdrop = document.querySelector('#backdrop');
 const progress = document.querySelector('#progress');
 const form = document.querySelector('form')
 const APP_TITLE = document.title
-const technologies = [
-  { title: 'HTML', description: 'HTML text', type: 'html', done: true },
-  { title: 'CSS', description: 'CSS text', type: 'css', done: true },
-  {
-    title: 'JavaScript',
-    description: 'JS text',
-    type: 'javascript',
-    done: true,
-  },
-  { title: 'React', description: 'React text', type: 'react', done: false },
-  { title: 'Git', description: 'GIT text', type: 'git', done: false },
-];
+const LS_KEY = 'MY_TECH'
+const technologies = getState()
 
 function isInValid(){
   if(!title.value){
@@ -53,6 +43,7 @@ form.addEventListener('submit', creatTech = (e) => {
   technologies.push(newTech)
   title.value = ''
   description.value = ''
+  saveState()
   init()
 })
 
@@ -60,6 +51,8 @@ modal.addEventListener('change', toogleTech = (e) => {
   const type = e.target.dataset.type
   const tech  = technologies.find(t => t.type === type)
   tech.done = e.target.checked
+
+  saveState()
   init()
 })
 
@@ -147,6 +140,15 @@ function toCard(tech) {
   return `<div class='card ${doneClass}' data-type='${tech.type}'>
           <h3 data-type='${tech.type}'>${tech.title}</h3>
         </div> `;
+}
+
+function saveState(){
+  localStorage.setItem(LS_KEY, JSON.stringify(technologies))
+}
+
+function getState(){
+  const raw = localStorage.getItem(LS_KEY)
+  return raw ? JSON.parse(raw) : ''
 }
 
 init();
