@@ -2,6 +2,7 @@ const modal = document.querySelector('#modal');
 const content = document.querySelector('#content');
 const backdrop = document.querySelector('#backdrop');
 const progress = document.querySelector('#progress');
+const form = document.querySelector('form')
 const APP_TITLE = document.title
 const technologies = [
   { title: 'HTML', description: 'HTML text', type: 'html', done: true },
@@ -15,6 +16,45 @@ const technologies = [
   { title: 'React', description: 'React text', type: 'react', done: false },
   { title: 'Git', description: 'GIT text', type: 'git', done: false },
 ];
+
+function isInValid(){
+  if(!title.value){
+    title.classList.add('invalid')
+  }
+  if(!description.value){
+    description.classList.add('invalid')
+  }
+
+  setTimeout(() => {
+    title.classList.remove('invalid')
+    description.classList.remove('invalid')
+  }
+  , 2000) 
+ return !title.value || !description.value
+}
+
+form.addEventListener('submit', creatTech = (e) => {
+  e.preventDefault()
+
+  const { title, description } = event.target
+
+  if(isInValid(title.description)){
+    console.log('invalid')
+    return 
+  }
+
+  const newTech = {
+    title: title.value,
+    description: description.value,
+    done: false,
+    type: title.value.toLowerCase()
+  }
+
+  technologies.push(newTech)
+  title.value = ''
+  description.value = ''
+  init()
+})
 
 modal.addEventListener('change', toogleTech = (e) => {
   const type = e.target.dataset.type
